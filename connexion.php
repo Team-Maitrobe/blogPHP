@@ -6,28 +6,37 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BlogPHP</title>
+        <title>HEADER</title>
     </head>
     <body>
         <header>
-            header
+            <h1>BlogPHP</h1>
         </header>
         <main>
             <h1>Bienvenue sur le blog</h1>
             <p>blog.exe a arrêté de fonctionner</p>
 
-            <form method="POST">
-                <label for="pseudo">Saisir votre pseudo ou adresse email :</label>
-                <input type="text" name="pseudo" />
+            <div class="boite-bleue">
+                <form method="POST">
+                    <label for="pseudo">Saisir votre pseudo ou adresse email :</label>
+                    <input type="text" id="pseudo" name="pseudo" required />
 
-                <label for="pseudo">Saisir votre mot de passe :</label>
-                <input type="text" name="mdp" />
+                    <label for="mdp">Saisir votre mot de passe :</label>
+                    <input type="password" id="mdp" name="mdp" required />
+
+                    <input type="submit" value="Connexion">
+
+                    <p>Pas encore inscrit ? <a href="./inscription.php">Rejoignez-nous ici</a></p>
+                </form>
                 
-                <input type="submit">
-            </form>
+                <p>Retournez à l'accueil en cliquant ici : 
+                    <a href="./blog.php">ACCUEIL</a>
+                </p>
+            </div>
         </main>
         <footer>
             footer
+            <p>© 2024 BlogPHP. Tous droits réservés.</p>
         </footer>
     </body>
 </html>

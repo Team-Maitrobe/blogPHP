@@ -9,9 +9,19 @@
     <title>BlogPHP</title>
 </head>
 <body>
+<header>
+    Header
+</header>
+<main>
     <h1>Bienvenue sur le blog</h1>
-    <p>blog.exe a arrêté de fonctionner</p>
+    <p>Bienvenue sur FouFood, le blog interactif vous permettant de choisir un restaurant proche de vous, 
+et qui conviendra à tout le monde !</p>
 
-    <p>Connectez vous en cliquant ici : <a href="./connexion.php">Connectez-vous !</a></p>
+    <a href="./connexion.php">Connexion</a>
+    <a href="./inscription.php">Inscription</a>
+</main>
+<footer>
+    Footer
+</footer>
 </body>
 </html>
