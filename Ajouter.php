@@ -10,7 +10,8 @@
     </head>
     <body>
         <header>
-            header
+
+            <input type="text" name="nomDuRestaurant" placeholder="Rechercher"/>
         </header>
         <main>
             <h1>/**Ajouter un restaurant**/</h1>
@@ -56,25 +57,75 @@
                     <option value="brasserie">Brasserie</option>
                     <option value="thai">Thaï</option>
                     <option value="vietnamienne">Vietnamienne</option>
+                    </select>
                 </div>
 
                 <div class="ambiance">
-                    <select name="" id="ambiance">
+                    <select name="ambiance" id="ambiance">
                     <option value="ambiance">--Ambiance--</option>
                     <option value="romantique">Romantique</option>
                     <option value="familiale">Familiale</option>
-                    <option value="chi">Moderne et élégante</option>
-                    <option value="parrot">Creperie</option>
-                    <option value="spider">Française</option>
-                    <option value="goldfish">FastFood</option>
-                    <option value="dog">Indienne</option>
-                    <option value="cat">Italienne</option>
-                    <option value="hamster">Japonaise</option>
-                    <option value="parrot">Marocaine</option>
-                    <option value="spider">Pizza</option>
-                    <option value="goldfish">Brasserie</option>
-                    <option value="spider">Thaï</option>
-                    <option value="goldfish">Vietnamienne</option>
+                    <option value="moderneEtElegante">Moderne et élégante</option>
+                    <option value="rustique ">Rustique </option>
+                    <option value="festive">Festive</option>
+                    <option value="decontractee ">décontractée </option>
+                    <option value="chicEtBranchee">Chic et branchée</option>
+                    <option value="thematique ">Thématique </option>
+                    </select>
+                </div>
+
+                <div class="prix">
+                    <select name="prix" id="prix">
+                    <option value="prix">--Tranche de prix--</option>
+                    <option value="zeroDix">0-10</option>
+                    <option value="dixVingt">10-20</option>
+                    <option value="vingtTrente">20-30</option>
+                    <option value="trenteQuarante ">30-40 </option>
+                    <option value="quaranteCinquante">40-50</option>
+                    <option value="tropChere">trop chere zebi</option>
+                    </select>
+                </div>
+
+                <div class="typeDeCuisine">
+                    <label class="vegetarien">
+                        <input type="checkbox" name="answer" />
+                        Végétarien
+                    </label>
+                    <label class="vegan">
+                        <input type="checkbox" name="answer" />
+                        Végan
+                    </label>
+                    <label class="menuEnfant">
+                        <input type="checkbox" name="answer" />
+                        Menu Enfant
+                    </label>
+                    <label class="halal">
+                        <input type="checkbox" name="answer" />
+                        Halal
+                    </label>
+                    <label class="kasher">
+                        <input type="checkbox" name="answer" />
+                        Kasher
+                    </label>
+                    <label class="poisson">
+                        <input type="checkbox" name="answer" />
+                        Poisson
+                    </label>
+                </div>
+
+                <div class="typeDeCuisine">
+                    <label class="petitDejeuner">
+                        <input type="checkbox" name="answer" />
+                        Petit Déjeuner
+                    </label>
+                    <label class="dejeuner">
+                        <input type="checkbox" name="answer" />
+                        Déjeuner
+                    </label>
+                    <label class="diner">
+                        <input type="checkbox" name="answer" />
+                        Diner
+                    </label>
                 </div>
             </form>
         </div>
