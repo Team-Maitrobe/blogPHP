@@ -1,18 +1,8 @@
 <?php
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BlogPHP</title>
-    </head>
-    <body>
-        <header>
+<?php include 'header.php'; ?>
 
-            <input type="text" name="nomDuRestaurant" placeholder="Rechercher"/>
-        </header>
         <main>
             <h1>/**Ajouter un restaurant**/</h1>
         <div class="boite-bleue">          
@@ -82,7 +72,7 @@
                     <option value="vingtTrente">20-30</option>
                     <option value="trenteQuarante ">30-40 </option>
                     <option value="quaranteCinquante">40-50</option>
-                    <option value="tropChere">trop chere zebi</option>
+                    <option value="cinquantePlus">50+</option>
                     </select>
                 </div>
 

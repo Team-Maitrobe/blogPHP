@@ -1,17 +1,8 @@
 <?php
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BlogPHP</title>
-    </head>
-    <body>
-        <header>
-            header
-        </header>
+<?php include 'header.php'; ?>
+
         <main>
             <h1>/**Nom du restaurant**/</h1>
         <div class="boite-bleue">          
