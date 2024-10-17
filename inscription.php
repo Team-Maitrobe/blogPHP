@@ -31,7 +31,7 @@
                 </form>
                 
                 <p>Retournez à l'accueil en cliquant ici : 
-                    <a href="./blog.php">ACCUEIL</a>
+                    <a href="./index.php">ACCUEIL</a>
                 </p>
             </div>
         </main>
