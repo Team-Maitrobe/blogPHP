@@ -1,4 +1,18 @@
 <?php
+
+$email = $_GET['email'];
+$nom = $_GET['nom'];
+$prenom = $_GET['prenom'];
+$username = $_GET['username'];
+$mdp = $_GET['mdp'];
+
+$sql = 'INSERT INTO utilisateur(pseudo, prenom, nomdefamille, motdepasse, email) 
+        VALUES(:username, :prenom, :nom, :mdp, :email)';
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute(["username" => $username, "prenom" => $prenom, "nom" => $nom, "mdp" => $mdp, "email" => $email]);
+
+
 ?>
 
 <!DOCTYPE html>
