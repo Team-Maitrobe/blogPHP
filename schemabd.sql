@@ -1,4 +1,5 @@
 CREATE DATABASE FOUFOOD;
+
 CREATE TABLE FOUFOOD.UTILISATEUR (
     pseudo VARCHAR(15) NOT NULL,
     prenom VARCHAR(25) NOT NULL,
@@ -37,4 +38,6 @@ CREATE TABLE FOUFOOD.POST (
 
     FOREIGN KEY (id_resto) REFERENCES FOUFOOD.RESTAURANT(id_resto),
     FOREIGN KEY (id_post_parent) REFERENCES FOUFOOD.POST(id_post)
+        ON DELETE CASCADE, -- Ça efface le post si le post parent est effacé
+    FOREIGN KEY (pseudo_bloggeur) REFERENCES FOUFOOD.UTILISATEUR(pseudo)
 );
