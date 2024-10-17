@@ -11,8 +11,4 @@ et qui conviendra à tout le monde !</p>
     <a href="./connexion.php">Connexion</a>
     <a href="./inscription.php">Inscription</a>
 </main>
-<footer>
-    Footer
-</footer>
-</body>
-</html>
+<?php include 'footer.php'; ?>
