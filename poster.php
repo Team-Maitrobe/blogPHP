@@ -1,14 +1,35 @@
 <?php
-if(!empty($_POST['submit'])) {
-    $titre = $_GET['titre'];
-    $typecommentaire = $_GET['typecommentaire'];
-    $commentaire = $_GET['commentaire'];
 
+if(!empty($_POST['submit'])){
+// Connexion à la base de données (envisagez de stocker les identifiants dans un fichier de configuration ou des variables d'environnement)
+$servername = "localhost";
+$username = "root";
+$password = "supermaitro";
+$dbname = "FOUFOOD";
+
+$titre = $_POST['titre'];
+$typecommentaire = $_POST['typecommentaire'];
+$commentaire = $_POST['commentaire'];
+
+if(!empty($titre) && !empty($typecommentaire) && !empty($commentaire)) {
     $sql = 'INSERT INTO POST(titre_post, type_post, contenu_post) 
-            VALUES(:titre, :typecommentaire, :contenu_post)';
+    VALUES(:titre, :typecommentaire, :commentaire)';
+} else {
+    echo "Veuillez remplir tous les champs.";
+}
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(["titre" => $titre, "typecommentaire" => $typecommentaire, "commentaire" => $commentaire]);}
+    $stmt->execute([
+    "titre" => $titre, 
+    "typecommentaire" => $typecommentaire, 
+    "commentaire" => $commentaire
+]);
+
+if ($stmt) {
+    header("Location: index.php"); //A MODIFIER POUR REDIRIGER SUR LE POST 
+}
+
+}
 
 
 ?>
