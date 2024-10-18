@@ -2,10 +2,7 @@ CREATE DATABASE FOUFOOD;
 
 CREATE TABLE FOUFOOD.UTILISATEUR (
     pseudo VARCHAR(15) NOT NULL,
-    prenom VARCHAR(25) NOT NULL,
-    nom_de_famille VARCHAR(25) NOT NULL,
-    mot_de_passe VARCHAR(25) NOT NULL,
-    courriel VARCHAR(60) NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
 
     PRIMARY KEY (pseudo)
 );
