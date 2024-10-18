@@ -49,8 +49,4 @@ $stmt->execute(["username" => $username, "prenom" => $prenom, "nom" => $nom, "md
                 </p>
             </div>
         </main>
-        <footer>
-            <p>© 2024 BlogPHP. Tous droits réservés.</p>
-        </footer>
-    </body>
-</html>
+<?php include 'footer.php'; ?>

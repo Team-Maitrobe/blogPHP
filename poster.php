@@ -33,8 +33,4 @@ if(!empty($_POST['submit'])) {
             </form>
         </div>
         </main>
-        <footer>
-            footer
-        </footer>
-    </body>
-</html>
+<?php include 'footer.php'; ?>

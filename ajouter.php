@@ -6,9 +6,7 @@
         <title>BlogPHP</title>
     </head>
     <body>
-        <header>
-            <input type="text" name="rechercheRestaurant" placeholder="Rechercher"/>
-        </header>
+    <?php include 'header.php'; ?>
         <main>
             <h1>Ajouter un restaurant</h1>
             <div class="boite-bleue">
@@ -124,8 +122,5 @@
             </form>
         </div>
         </main>
-        <footer>
-            footer
-        </footer>
-    </body>
-</html>
+<?php include 'footer.php'; ?>
+    
