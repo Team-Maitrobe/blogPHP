@@ -4,7 +4,7 @@ if(!empty($_POST['submit'])){
 // Connexion à la base de données (envisagez de stocker les identifiants dans un fichier de configuration ou des variables d'environnement)
 $servername = "localhost";
 $username = "root";
-$password = "supermaitro";
+$password = "2917";
 $dbname = "FOUFOOD";
 
 $titre = $_POST['titre'];

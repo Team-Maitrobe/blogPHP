@@ -10,11 +10,12 @@
                 background-color: #457B9D;
                 justify-content: space-between;
                 align-items: center;
+                flex-direction: row;
                 margin: 0px;
             }
             img{
-                width: 75px;
                 height: 75px;
+                width: 75px;
             }
             #rechercheResto{
                 height: 35px;
