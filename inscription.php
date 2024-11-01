@@ -7,11 +7,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Path to the JSON file
-$jsonFilePath = '/var/www/blogPHP/security/id.json';
+$jsonFilePath = './security/id.json';
 
 // Check if the JSON file exists
 if (!file_exists($jsonFilePath)) {
-    die("JSON file not found at $jsonFilePath!");
+    die("JSON file not found at $jsonFilePath !");
 }
 
 // Parse the JSON file
