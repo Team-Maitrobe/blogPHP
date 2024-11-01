@@ -27,7 +27,16 @@
     </head>
     <body>
         <header>
-            <img src="./img/Fou2food.png" alt="logo de Fou2food, une fourchette et un couteau">
+            <a href="./index.php">
+                <img src="./img/Fou2food.png" alt="logo de Fou2food, une fourchette et un couteau">
+            </a>
             <input id="rechercheResto" type="text" name="nomDuRestaurant" placeholder="Rechercher un restaurant"/>
-            <img src="./img/user.png" alt="image type d'une photo de profil"/>
+            <?php if (!empty($_SESSION['user'])): ?>
+                <a href="./profil.php">
+            <?php else : ?>
+                <a href="./inscription.php">
+            <?php endif; ?>
+                    <img src="./img/user.png" alt="image type d'une photo de profil"/>
+                </a>
+            
         </header>

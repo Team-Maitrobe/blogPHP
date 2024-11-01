@@ -42,25 +42,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pseudo = $_POST['pseudo'];
     $motDePasse = $_POST['motDePasse'];
 
-    // Check if user exists
-    $sql_select = 'SELECT COUNT(*) FROM FOUFOOD.UTILISATEUR WHERE pseudo = :pseudo';
+    // Check if user exists and retrieve their hashed password
+    $sql_select = 'SELECT mot_de_passe FROM FOUFOOD.UTILISATEUR WHERE pseudo = :pseudo';
     $stmt = $pdo->prepare($sql_select);
     $stmt->execute(['pseudo' => $pseudo]);
+    $hashedPassword = $stmt->fetchColumn();
 
-    if ($stmt->fetchColumn() == 0) {
-        // Insert user if they don't already exist
-        $sql_insert = 'INSERT INTO FOUFOOD.UTILISATEUR(pseudo, mot_de_passe) 
-                       VALUES(:pseudo, :motDePasse)';
-
-        $stmt = $pdo->prepare($sql_insert);
-        $stmt->execute([
+    if ($hashedPassword === false) {
+        // User does not exist, so we create a new user
+        $hashedPassword = password_hash($motDePasse, PASSWORD_DEFAULT);
+        $sql_insert = 'INSERT INTO FOUFOOD.UTILISATEUR(pseudo, mot_de_passe) VALUES(:pseudo, :motDePasse)';
+        $stmt_insert = $pdo->prepare($sql_insert);
+        $stmt_insert->execute([
             'pseudo' => $pseudo,
-            'motDePasse' => $motDePasse,
+            'motDePasse' => $hashedPassword,
         ]);
 
         echo "Inscription réussie!";
+    } else if (password_verify($motDePasse, $hashedPassword)) {
+        // Password is correct
+        $_SESSION['user'] = $pseudo;
+        header('Location: index.php');
     } else {
-        echo "Le pseudo est déjà pris. Veuillez en choisir un autre.";
+        // Incorrect password
+        echo "Mauvais mdp";
     }
 }
 ?>
