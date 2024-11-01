@@ -12,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Initialisation des valeurs bitwise
     $typeCommande = 0;
-    $servicesProposes = 0;
     $regimesProposes = 0;
+    $servicesProposes = 0;
 
     // Type de commande
     if (isset($_POST['livraisonADomicile'])) $typeCommande |= 1;
     if (isset($_POST['surPlace'])) $typeCommande |= 2;
     if (isset($_POST['aEmporter'])) $typeCommande |= 4;
-    if (isset($_POST['tooGoodToGo'])) $servicesProposes |= 1;
+    if (isset($_POST['tooGoodToGo'])) $typeCommande |= 8;
 
     // Régimes alimentaires
     if (isset($_POST['vegetarien'])) $regimesProposes |= 1;
@@ -28,6 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['halal'])) $regimesProposes |= 8;
     if (isset($_POST['kasher'])) $regimesProposes |= 16;
     if (isset($_POST['poisson'])) $regimesProposes |= 32;
+
+    //Services proposés
+    if (isset($_POST['petitDejeuner'])) $servicesProposes |= 1;
+    if (isset($_POST['dejeuner'])) $servicesProposes |= 2;
+    if (isset($_POST['diner'])) $servicesProposes |= 4;
 
     try {
         // Préparation et exécution de l'insertion en base de données
@@ -142,15 +147,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="typeDeCuisine">
             <label class="petitDejeuner">
-                <input type="checkbox" name="answer" />
+                <input type="checkbox" id="petitDejeuner" name="petitDejeuner" />
                 Petit Déjeuner
             </label>
             <label class="dejeuner">
-                <input type="checkbox" name="answer" />
+                <input type="checkbox" id="dejeuner" name="dejeuner" />
                 Déjeuner
             </label>
             <label class="diner">
-                <input type="checkbox" name="answer" />
+                <input type="checkbox" id="diner" name="diner" />
                 Diner
             </label>
         </div>

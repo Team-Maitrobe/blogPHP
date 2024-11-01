@@ -32,7 +32,7 @@ $restaurants = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             
                                 <td><?= htmlspecialchars($restaurant['id_resto']) ?></td>
-                                <td><a href="./restaurant?restaurant=<?= htmlspecialchars($restaurant['id_resto']) ?>"><?= htmlspecialchars($restaurant['nom_resto']) ?></a></td>
+                                <td><a href="./restaurant.php?restaurant=<?= htmlspecialchars($restaurant['id_resto']) ?>"><?= htmlspecialchars($restaurant['nom_resto']) ?></a></td>
                                 <td><?= htmlspecialchars($restaurant['adresse_resto']) ?></td>
                                 <td><?= htmlspecialchars($restaurant['type_commande']) ?></td>
                                 <td><?= htmlspecialchars($restaurant['services_proposes']) ?></td>

@@ -15,7 +15,7 @@ CREATE TABLE FOUFOOD.RESTAURANT (
     services_proposes INT,
     regimes_proposes INT,
     type_cuisine VARCHAR(20) NOT NULL,
-    ambiance INT,
+    ambiance VARCHAR(20),
     tranche_prix VARCHAR(5) NOT NULL,
 
     PRIMARY KEY (id_resto)
