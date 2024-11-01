@@ -1,3 +1,8 @@
+<?php
+    session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -32,11 +37,15 @@
             </a>
             <input id="rechercheResto" type="text" name="nomDuRestaurant" placeholder="Rechercher un restaurant"/>
             <?php if (!empty($_SESSION['user'])): ?>
+                <p>Connecté en tant que <?php echo htmlspecialchars($_SESSION['user']); ?></p>
+            <?php else: ?>
+                <p>Vous n'êtes pas connecté.</p>
+            <?php endif; ?>
+            <?php if (!empty($_SESSION['user'])): ?>
                 <a href="./profil.php">
             <?php else : ?>
-                <a href="./inscription.php">
+                <a href="./connexion.php">
             <?php endif; ?>
                     <img src="./img/user.png" alt="image type d'une photo de profil"/>
                 </a>
-            
         </header>

@@ -1,41 +1,6 @@
 <?php
-session_start();
-
-// Enable error reporting for debugging
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Path to the JSON file
-$jsonFilePath = './security/id.json';
-
-// Check if the JSON file exists
-if (!file_exists($jsonFilePath)) {
-    die("JSON file not found at $jsonFilePath !");
-}
-
-// Parse the JSON file
-$id = json_decode(file_get_contents($jsonFilePath), true);
-
-// Check if the JSON decoding was successful and if the necessary keys exist
-if ($id === null) {
-    die('Failed to decode JSON. Error: ' . json_last_error_msg());
-}
-
-if (!isset($id['servername'], $id['username'], $id['password'], $id['dbname'])) {
-    die('Missing required keys in id.json. Check that "servername", "username", "password", and "dbname" are present.');
-}
-
-// Construct the DSN (Data Source Name)
-$dsn = "mysql:host={$id['servername']};dbname={$id['dbname']};charset=utf8";
-
-try {
-    // Create the PDO connection using the constructed DSN
-    $pdo = new PDO($dsn, $id['username'], $id['password']);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
+include 'connexionbd.php';
+include 'header.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form data
@@ -58,23 +23,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'motDePasse' => $hashedPassword,
         ]);
 
-        echo "Inscription réussie!";
+        echo "inscription réussie!";
     } else if (password_verify($motDePasse, $hashedPassword)) {
         // Password is correct
         $_SESSION['user'] = $pseudo;
         header('Location: index.php');
     } else {
         // Incorrect password
-        echo "Mauvais mdp";
+        echo "Mauvais mot de passe";
     }
 }
 ?>
 
-<?php include 'header.php'; ?>
-
 <main>
     <h1>Bienvenue sur le blog</h1>
-    <p>Veuillez vous inscrire</p>
+    <p>Veuillez vous connecter</p>
 
     <div class="boite-bleue">
         <form method="POST">

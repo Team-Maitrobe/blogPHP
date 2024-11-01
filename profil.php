@@ -7,12 +7,10 @@
         // Clear the user session on logout
         $_SESSION['user'] = '';
         session_destroy(); // Optionally destroy the session
-        header('Location: inscription.php');
+        header('Location: connexion.php');
     }
 ?>
-<p>
-    Oui pas mal le compte
-</p>
+<p>Bienvenue, <?php echo htmlspecialchars($_SESSION['user']); ?> ! Vous êtes bien connecté.</p>
 <form method="POST" style="display:inline;">
     <input type="submit" name="logout" value="Deconnexion">
     

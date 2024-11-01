@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <?php include 'header.php'; ?>
 
 <main>
@@ -9,11 +5,13 @@
     <p>Bienvenue sur FouFood, le blog interactif vous permettant de choisir un restaurant proche de vous, 
 et qui conviendra à tout le monde !</p>
 
-    <a href="./inscription.php">Inscription</a>
+    <a href="./connexion.php">connexion</a>
 
     <?php if (!empty($_SESSION['user'])): ?>
         <a href='./ajouter.php'>Ajouter un restaurant</a>
     <?php endif ?>
+
+    <a href="./listerestaurant.php">Liste des restaurants</a>
     
 </main>
 

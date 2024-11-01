@@ -1,3 +1,6 @@
+<?php include 'connexionbd.php'; ?>
+<?php include 'header.php'; ?>
+
 <?php
 
 if(!empty($_POST['submit'])){
