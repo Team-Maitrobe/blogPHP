@@ -84,38 +84,181 @@ p {
     color: #333;
 }
 
+.boite-bleu-index{
+    background-color: #a8d0d6;
+    border-radius: 15px;
+    width: 300px;
+    max-width: 90%; /* Limite la largeur à 90% de l'écran sur les petits appareils */
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+    gap: 5px; /* Espacement entre les éléments */
+}
+
 
 .boite-bleu-index a{
-    font-weight: bold;
     text-decoration: none;
+    font-size: larger;
+    width: 100%;
+    padding: 10px;
+    background-color: #67989a;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+/* Styles pour les commentaires */
+.commentaire {
+    background-color: #a8d0d6;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    display: flex; /* Utilisation de flexbox */
+    flex-direction: column; /* Aligne les éléments verticalement */
+}
+
+/* Styles pour le texte des commentaires */
+.commentaire strong {
+    color: #333;
+}
+
+/* Styles pour les réponses */
+.reponse {
+    background-color: #b0c4de; /* Couleur légèrement différente pour les réponses */
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px 0 0 20px; /* Indentation pour les réponses */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteneur pour le bouton "Répondre" */
+.bouton-repondre {
+    margin-top: 10px;
+    margin-left: auto; /* Aligne à droite */
+}
+
+/* Styles pour le bouton "Répondre" */
+/* Styles pour le bouton "Répondre" */
+.btn-repondre {
+    background-color: #67989a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px; /* Agrandi */
+    cursor: pointer;
+    margin-left: auto; /* Alignement à droite */
+}
+
+
+.btn-repondre:hover {
+    background-color: #567f80;
+}
+
+/* Styles pour le titre des commentaires */
+h3 {
+    color: #333;
+    text-align: center; /* Alignement à gauche pour les titres */
+    margin-top: 20px;
+}
+
+
+/* Styles pour la page Liste des Restaurants */
+
+/* Conteneur principal de la liste */
+.boite-bleue-liste {
+    background-color: #a8d0d6;
+    border-radius: 15px;
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Permet un défilement horizontal sur petits écrans */
+}
+
+/* Styles pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 7px;
+    overflow: hidden; /* Assure que les bords arrondis sont appliqués */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #b0c4de;
+}
+
+th {
+    background-color: #67989a;
+    color: #fff;
+    font-weight: bold;
+}
+
+td {
+    background-color: #dfe9e6;
+    color: #333;
+}
+
+/* Lien vers la page de détail du restaurant */
+table td a {
+    color: #67989a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table td a:hover {
+    text-decoration: underline;
+}
+
+/* Message "Aucun restaurant trouvé" */
+tbody tr td[colspan="9"] {
+    text-align: center;
+    font-style: italic;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Effet de survol des lignes */
+tbody tr:hover {
+    background-color: #e0f2f2;
+}
+
+/* Surlignement de la ligne entière lors du survol d'un lien */
+table td a:hover {
+    text-decoration: underline; /* Soulignement lors du survol du lien */
+}
+
+/* Surlignement de la ligne entière lorsque la souris passe sur une cellule */
+tbody tr:hover td {
+    background-color: #e0f2f2; /* Assure que la ligne entière est surlignée */
 }
 
 
 
 
-
-/* Responsive styles */
+/* Responsive pour le tableau */
 @media (max-width: 768px) {
-    /* Réduit la taille du texte et des marges pour les écrans moyens */
-    .boite-bleue-connexion {
-        padding: 15px;
-    }
-
-    .boite-bleue-connexion label {
-        font-size: 13px;
-    }
-
-    .boite-bleue-connexion input[type="text"],
-    .boite-bleue-connexion input[type="password"] {
-        font-size: 14px;
-    }
-
-    .boite-bleue-connexion input[type="submit"] {
+    th, td {
+        padding: 8px;
         font-size: 14px;
     }
 }
 
-
+@media (max-width: 480px) {
+    th, td {
+        padding: 6px;
+        font-size: 12px;
+    }
+}
 
 
 @media (max-width: 480px) {
@@ -140,5 +283,107 @@ p {
         font-size: 12px;
         padding: 8px;
     }
+
+    th, td {
+        padding: 6px;
+        font-size: 12px;
+    }
 }
     
+/* CSS du formulaire pour ajouter un restaurant */
+/* Conteneur principal */
+.boite-bleue {
+    background-color: #cde7f0;
+    border: 3px solid #7bb9d1;
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+    margin: 20px auto;
+    font-family: 'Comic Sans MS', sans-serif;
+    color: #333;
+}
+
+/* Titre du formulaire */
+.boite-bleue h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Styles des champs de texte */
+.boite-bleue input[type="text"] {
+    width: calc(100% - 120px); /* Ajuste la largeur pour laisser de la place aux labels */
+    padding: 8px;
+    border: 2px solid #bbb;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #666;
+    background-color: #f3f7f9;
+    font-style: italic;
+    display: inline-block; /* Affiche les champs de texte en ligne */
+    vertical-align: middle; /* Aligne verticalement au milieu */
+}
+
+/* Bouton de soumission */
+.boite-bleue input[type="submit"] {
+    background-color: #7bb9d1;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.boite-bleue input[type="submit"]:hover {
+    background-color: #5da1b7;
+}
+
+/* Checkboxes */
+.boite-bleue label {
+    display: inline-block; /* Affiche les labels en ligne */
+    width: 100px; /* Largeur fixe pour les labels */
+    margin: 5px 0;
+    font-size: 16px;
+    vertical-align: middle; /* Aligne verticalement au milieu */
+}
+
+.boite-bleue input[type="checkbox"] {
+    accent-color: #e55e5e;
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+/* Sélecteurs */
+.boite-bleue select {
+    width: calc(100% - 120px); /* Ajuste la largeur pour laisser de la place aux labels */
+    padding: 8px;
+    margin: 8px 0;
+    border: 2px solid #bbb;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #666;
+    background-color: #f3f7f9;
+    display: inline-block; /* Affiche les sélecteurs en ligne */
+    vertical-align: middle; /* Aligne verticalement au milieu */
+}
+
+/* Icône Too Good To Go */
+.boite-bleue .options label i {
+    font-size: 12px;
+    color: #333;
+    margin-left: 5px;
+}
+
+/* Sections des différentes options */
+.options, .typeDeCuisine, .ambiance, .prix, .restrictionAlimentaire {
+    margin-bottom: 10px;
+}
+
+.restrictionAlimentaire label, .options label {
+    display: inline-block;
+    width: 48%;
+}

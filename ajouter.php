@@ -5,7 +5,7 @@ include 'connexionbd.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des données du formulaire
     $nom = $_POST['nomDuRestaurant'];
-    $adresse = $_POST['adresse'];
+    $adresse = $_POST['adresse'] . ', ' . $_POST['codePostal'] .' ' . $_POST['ville'];
     $typeCuisine = $_POST['typeDeCuisine'];
     $tranchePrix = $_POST['prix'];
     $ambiance = $_POST['ambiance'];
@@ -64,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST">
             <input type="text" name="nomDuRestaurant" placeholder="Nom du restaurant" required />
             <input type="text" name="adresse" placeholder="Adresse" required />
+            <input type="text" name="codePostal" placeholder="Code Postal" required />
+            <input type="text" name="ville" placeholder="Ville" required />
 
             <div class="options" required>
                 <label><input type="checkbox" name="livraisonADomicile" /> Livraison à domicile</label>

@@ -1,17 +1,34 @@
 <?php
-include 'connexionbd.php';
+    include 'connexionbd.php';
 
-$sql_select = 'SELECT id_resto, nom_resto, adresse_resto, type_commande, services_proposes, regimes_proposes, type_cuisine, ambiance, tranche_prix FROM FOUFOOD.RESTAURANT';
-$stmt = $pdo->prepare($sql_select);
-$stmt->execute();
-$restaurants = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Préparer la requête SQL de base
+    $sql_select = 'SELECT id_resto, nom_resto, adresse_resto, type_commande, services_proposes, regimes_proposes, type_cuisine, ambiance, tranche_prix FROM FOUFOOD.RESTAURANT';
+
+    // Vérifie si une recherche a été faite
+    if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
+        $searchTerm = '%' . trim($_GET['search']) . '%'; // Ajoute des jokers pour la recherche
+        $sql_select .= ' WHERE nom_resto LIKE :search'; // Ajoute une condition de recherche
+
+        $stmt = $pdo->prepare($sql_select);
+        $stmt->bindParam(':search', $searchTerm, PDO::PARAM_STR); // Lie le paramètre
+    } else {
+        $stmt = $pdo->prepare($sql_select); // Prépare la requête sans condition de recherche
+    }
+
+    $stmt->execute(); // Exécute la requête
+    $restaurants = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupère les résultats
+
+include 'header.php'; 
+
+include 'fonctionsFormatRestaurant.php';
+
 ?>
 
-<?php include 'header.php'; ?>
 
 <main>
     <h1>Liste des restaurants</h1>
-    <div class="boite-bleue">
+    <a href="./ajouter.php">Ajouter un restaurant</a>
+    <div class="boite-bleue-liste">
         <table border="1">
             <thead>
                 <tr>
@@ -31,12 +48,12 @@ $restaurants = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                                 <td><a href="./restaurant.php?restaurant=<?= htmlspecialchars($restaurant['id_resto']) ?>"><?= htmlspecialchars($restaurant['nom_resto']) ?></a></td>
                                 <td><?= htmlspecialchars($restaurant['adresse_resto']) ?></td>
-                                <td><?= htmlspecialchars($restaurant['type_commande']) ?></td>
-                                <td><?= htmlspecialchars($restaurant['services_proposes']) ?></td>
-                                <td><?= htmlspecialchars($restaurant['regimes_proposes']) ?></td>
-                                <td><?= htmlspecialchars($restaurant['type_cuisine']) ?></td>
-                                <td><?= htmlspecialchars($restaurant['ambiance']) ?></td>
-                                <td><?= htmlspecialchars($restaurant['tranche_prix']) ?></td>
+                                <td><?= formatTypeCommande($restaurant['type_commande']) ?></td>
+                                <td><?= formatServicesProposes($restaurant['services_proposes']) ?></td>
+                                <td><?= formatRegimesProposes($restaurant['regimes_proposes']) ?></td>
+                                <td><?= formatTypeCuisine($restaurant['type_cuisine']) ?></td>
+                                <td><?= formatAmbiance($restaurant['ambiance']) ?></td>
+                                <td><?= formatTranchePrix($restaurant['tranche_prix']) ?></td>
                             
                         </tr>
                     <?php endforeach; ?>

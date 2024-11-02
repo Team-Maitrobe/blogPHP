@@ -18,6 +18,20 @@ if (isset($_GET['restaurant'])) {
         exit; // Quitter la page si l'utilisateur n'est pas connecté
     }
 
+    // Vérifie si le post parent existe, seulement si un ID de post parent est fourni
+    if ($idPostParent) {
+        $sqlCheckParent = 'SELECT COUNT(*) FROM FOUFOOD.POST WHERE id_post = :idPostParent';
+        $stmtCheck = $pdo->prepare($sqlCheckParent);
+        $stmtCheck->execute(['idPostParent' => $idPostParent]);
+        $parentExists = $stmtCheck->fetchColumn();
+
+        if (!$parentExists) {
+            echo "<p>Le post parent n'existe pas.</p>";
+            include 'footer.php'; 
+            exit; // Quitter la page si le post parent n'existe pas
+        }
+    }
+
     // Vérifie si le formulaire a été soumis
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['commentaire']) && !empty($_POST['titre'])) {
         $commentaire = $_POST['commentaire'];
@@ -59,7 +73,7 @@ if (isset($_GET['restaurant'])) {
     } else {
         // Affichage du formulaire de commentaire
         echo '
-            <h3>Ajouter un commentaire pour le restaurant</h3>
+            <h3>' . ($idPostParent ? "Répondre au commentaire" : "Ajouter un commentaire") . ' pour le restaurant</h3>
             <form method="post">
                 <label for="titre">Titre :</label>
                 <input type="text" id="titre" name="titre" maxlength="70" required><br>

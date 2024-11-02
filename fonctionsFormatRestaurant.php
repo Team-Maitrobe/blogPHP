@@ -69,7 +69,7 @@ function formatAmbiance($ambiance) {
 function formatTranchePrix($tranchePrix) {
     switch ($tranchePrix) {
         case 'm10':
-            return 'moins de 10€ par personne';
+            return 'Moins de 10€ par personne';
         case 'm20':
             return 'Entre 10 et 20€ par personne';
         case 'm30':

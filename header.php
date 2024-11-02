@@ -36,7 +36,7 @@
             <a href="./index.php">
                 <img src="./img/Fou2food.png" alt="logo de Fou2food, une fourchette et un couteau">
             </a>
-            <input id="rechercheResto" type="text" name="nomDuRestaurant" placeholder="Rechercher un restaurant"/>
+            <?php include 'recherche.php';?>
             <?php if (!empty($_SESSION['user'])): ?>
                 <p>Connecté en tant que <?php echo htmlspecialchars($_SESSION['user']); ?></p>
             <?php else: ?>
