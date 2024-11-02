@@ -1,60 +1,77 @@
-<?php include 'connexionbd.php'; ?>
-<?php include 'header.php'; ?>
+<?php 
+session_start(); // Assurez-vous que la session est démarrée
+include 'header.php'; 
+include 'connexionbd.php';
 
-<?php
+// Définir le fuseau horaire sur Paris
+date_default_timezone_set('Europe/Paris');
 
-if(!empty($_POST['submit'])){
-// Connexion à la base de données (envisagez de stocker les identifiants dans un fichier de configuration ou des variables d'environnement)
-$servername = "localhost";
-$username = "root";
-$password = "2917";
-$dbname = "FOUFOOD";
+if (isset($_GET['restaurant'])) {
+    $idresto = $_GET['restaurant'];
+    $idPostParent = $_GET['id_post_parent'] ?? null; // Si c'est une réponse à un commentaire
 
-$titre = $_POST['titre'];
-$typecommentaire = $_POST['typecommentaire'];
-$commentaire = $_POST['commentaire'];
+    // Vérifiez si le pseudo de l'utilisateur est disponible dans la session
+    $pseudo = $_SESSION['user'] ?? null; // Obtenez le pseudo de la session
+    if (!$pseudo) {
+        echo "<p>Vous devez être connecté pour poster un commentaire.</p>";
+        include 'footer.php'; 
+        exit; // Quitter la page si l'utilisateur n'est pas connecté
+    }
 
-if(!empty($titre) && !empty($typecommentaire) && !empty($commentaire)) {
-    $sql = 'INSERT INTO POST(titre_post, type_post, contenu_post) 
-    VALUES(:titre, :typecommentaire, :commentaire)';
-} else {
-    echo "Veuillez remplir tous les champs.";
-}
+    // Vérifie si le formulaire a été soumis
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['commentaire']) && !empty($_POST['titre'])) {
+        $commentaire = $_POST['commentaire'];
+        $titre = $_POST['titre'];
+        
+        // Utiliser DateTime pour obtenir la date actuelle à Paris
+        $dateTime = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $datePost = $dateTime->format('Y-m-d H:i:s'); // Obtenir la date actuelle au format SQL
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-    "titre" => $titre, 
-    "typecommentaire" => $typecommentaire, 
-    "commentaire" => $commentaire
-]);
+        try {
+            // Prépare la requête d'insertion
+            $sql = 'INSERT INTO FOUFOOD.POST (date_post, titre_post, type_post, contenu_post, id_resto, pseudo_bloggeur' 
+                 . ($idPostParent ? ', id_post_parent' : '') . ')
+                     VALUES (:datePost, :titre, "comment", :contenu, :idresto, :pseudo' 
+                 . ($idPostParent ? ', :idPostParent' : '') . ')';
+            $stmt = $pdo->prepare($sql);
 
-if ($stmt) {
-    header("Location: index.php"); //A MODIFIER POUR REDIRIGER SUR LE POST 
-}
+            // Définition des paramètres
+            $params = [
+                'datePost' => $datePost,
+                'titre' => $titre,
+                'contenu' => $commentaire,
+                'idresto' => $idresto,
+                'pseudo' => $pseudo,
+            ];
+            if ($idPostParent) {
+                $params['idPostParent'] = $idPostParent;
+            }
 
-}
+            // Exécution de la requête
+            $stmt->execute($params);
 
-
-?>
-
-<?php include 'header.php'; ?>
-
-        <main>
-            <h1>/**Nom du restaurant**/</h1>
-        <div class="boite-bleue">          
-            <form method="POST">
-                <input type="text" name="titre" placeholder="Titre" required/>
-                
-                <input type="radio" name="typecommentaire" value="avis"/>
-                <label for="avis">Avis</label>
-
-                <input type="radio" name="typecommentaire" value="question"/>
-                <label for="question">Question</label>
-
-                <input type="text" name="commentaire" placeholder="Ecrire ici" required/>
-
-                <input type="submit">
+            // Message de confirmation et lien de retour
+            echo "<p>Commentaire ajouté avec succès !</p>";
+            echo '<a href="restaurant.php?restaurant=' . urlencode($idresto) . '">Retourner au restaurant</a>';
+        } catch (PDOException $e) {
+            echo "<p>Erreur SQL : " . $e->getMessage() . "</p>";
+        }
+    } else {
+        // Affichage du formulaire de commentaire
+        echo '
+            <h3>Ajouter un commentaire pour le restaurant</h3>
+            <form method="post">
+                <label for="titre">Titre :</label>
+                <input type="text" id="titre" name="titre" maxlength="70" required><br>
+                <label for="commentaire">Commentaire :</label>
+                <textarea id="commentaire" name="commentaire" rows="4" cols="50" maxlength="280" placeholder="Votre commentaire ici..." required></textarea><br>
+                <button type="submit" class="btn">Poster le commentaire</button>
             </form>
-        </div>
-        </main>
-<?php include 'footer.php'; ?>
+            <a href="restaurant.php?restaurant=' . urlencode($idresto) . '">Annuler</a>
+        ';
+    }
+} else {
+    echo "<p>Paramètre 'restaurant' manquant dans l'URL.</p>";
+}
+
+include 'footer.php'; 

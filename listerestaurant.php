@@ -15,7 +15,6 @@ $restaurants = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <table border="1">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nom</th>
                     <th>Adresse</th>
                     <th>Type de commande</th>
@@ -30,8 +29,6 @@ $restaurants = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php if (count($restaurants) > 0): ?>
                     <?php foreach ($restaurants as $restaurant): ?>
                         <tr>
-                            
-                                <td><?= htmlspecialchars($restaurant['id_resto']) ?></td>
                                 <td><a href="./restaurant.php?restaurant=<?= htmlspecialchars($restaurant['id_resto']) ?>"><?= htmlspecialchars($restaurant['nom_resto']) ?></a></td>
                                 <td><?= htmlspecialchars($restaurant['adresse_resto']) ?></td>
                                 <td><?= htmlspecialchars($restaurant['type_commande']) ?></td>

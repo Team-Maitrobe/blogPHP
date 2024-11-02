@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Bienvenue sur le blog</h1>
     <p>Veuillez vous connecter</p>
 
-    <div class="boite-bleue">
+    <div class="boite-bleue-connexion">
         <form method="POST">
             <label for="pseudo">Pseudo :</label>
             <input type="text" id="pseudo" name="pseudo" maxlength="15" required />

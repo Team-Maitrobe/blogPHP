@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" name="nomDuRestaurant" placeholder="Nom du restaurant" required />
             <input type="text" name="adresse" placeholder="Adresse" required />
 
-            <div class="options">
+            <div class="options" required>
                 <label><input type="checkbox" name="livraisonADomicile" /> Livraison à domicile</label>
                 <label><input type="checkbox" name="surPlace" /> Sur place</label>
                 <label><input type="checkbox" name="aEmporter" /> À emporter</label>

@@ -1,0 +1,144 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dfe9e6;
+}
+
+/* Conteneur principal de la connexion */
+.boite-bleue-connexion {
+    background-color: #a8d0d6;
+    border-radius: 15px;
+    width: 300px;
+    max-width: 90%; /* Limite la largeur à 90% de l'écran sur les petits appareils */
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Alignement des labels */
+.boite-bleue-connexion label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+/* Champs de formulaire */
+.boite-bleue-connexion input[type="text"],
+.boite-bleue-connexion input[type="password"] {
+    width: 90%;
+    padding: 8px;
+    border: 2px solid #b0c4de;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Bouton d'inscription */
+.boite-bleue-connexion input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #67989a;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.boite-bleue-connexion input[type="submit"]:hover {
+    background-color: #567f80;
+}
+
+/* Texte de suggestion d'inscription */
+.boite-bleue-connexion p {
+    font-size: 14px;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Liens */
+.boite-bleue-connexion a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.boite-bleue-connexion a:hover {
+    text-decoration: underline;
+}
+
+/* Autres éléments */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    text-align: center;
+    color: #333;
+}
+
+
+.boite-bleu-index a{
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    /* Réduit la taille du texte et des marges pour les écrans moyens */
+    .boite-bleue-connexion {
+        padding: 15px;
+    }
+
+    .boite-bleue-connexion label {
+        font-size: 13px;
+    }
+
+    .boite-bleue-connexion input[type="text"],
+    .boite-bleue-connexion input[type="password"] {
+        font-size: 14px;
+    }
+
+    .boite-bleue-connexion input[type="submit"] {
+        font-size: 14px;
+    }
+}
+
+
+
+
+@media (max-width: 480px) {
+    /* Pour les petits écrans, ajuste encore plus les marges et le texte */
+    .boite-bleue-connexion {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .boite-bleue-connexion label,
+    .boite-bleue-connexion p {
+        font-size: 12px;
+    }
+
+    .boite-bleue-connexion input[type="text"],
+    .boite-bleue-connexion input[type="password"] {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .boite-bleue-connexion input[type="submit"] {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+    
