@@ -40,12 +40,17 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
                         <button type="submit" class="btn">Ajouter un commentaire</button>
                     </form>';
                 echo '</div>';
-                   
-
-                // Suppression du commentaire et de ses réponses
+                
+                // Récupération du pseudo de l'utilisateur connecté
+                $email = $_SESSION['user'];
+                $sql = 'SELECT pseudo FROM FOUFOOD.UTILISATEUR WHERE email = :email';    
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(['email' => $email]);
+                $pseudo_suppression = $stmt->fetch(PDO::FETCH_ASSOC)['pseudo'];
+                
+                // Suppression d'un commentaire et de ses réponses
                 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_commentaire'], $_POST['id_commentaire'])) {
                     $idCommentaire = $_POST['id_commentaire'];
-                    $pseudo = $_SESSION['user'];
 
                     try {
                         // Vérifie que l'utilisateur est le propriétaire du commentaire
@@ -53,7 +58,7 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
                         $stmtVerif->execute(['idCommentaire' => $idCommentaire]);
                         $comment = $stmtVerif->fetch(PDO::FETCH_ASSOC);
 
-                        if ($comment && $comment['pseudo_bloggeur'] === $pseudo) {
+                        if ($comment && $comment['pseudo_bloggeur'] === $pseudo_suppression) {
                             // Supprime d'abord toutes les réponses associées
                             $stmtDeleteReplies = $pdo->prepare('DELETE FROM FOUFOOD.POST WHERE id_post_parent = :idCommentaire');
                             $stmtDeleteReplies->execute(['idCommentaire' => $idCommentaire]);
@@ -74,7 +79,6 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
                 // Suppression d'une réponse spécifique
                 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer_reponse'], $_POST['id_reponse'])) {
                     $idReponse = $_POST['id_reponse'];
-                    $pseudo = $_SESSION['user'];
 
                     try {
                         // Vérifie que l'utilisateur est le propriétaire de la réponse
@@ -82,7 +86,7 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
                         $stmtVerifReponse->execute(['idReponse' => $idReponse]);
                         $reponse = $stmtVerifReponse->fetch(PDO::FETCH_ASSOC);
 
-                        if ($reponse && $reponse['pseudo_bloggeur'] === $pseudo) {
+                        if ($reponse && $reponse['pseudo_bloggeur'] === $pseudo_suppression) {
                             // Supprime uniquement la réponse
                             $stmtDeleteReponse = $pdo->prepare('DELETE FROM FOUFOOD.POST WHERE id_post = :idReponse');
                             $stmtDeleteReponse->execute(['idReponse' => $idReponse]);
@@ -106,7 +110,6 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
                 if ($commentaires) {
                     foreach ($commentaires as $commentaire) {
                         echo "<div class='commentaire'>";
-                        // Affichage du titre
                         echo "<strong>" . htmlspecialchars($commentaire['pseudo_bloggeur']) . "</strong> <em>(" . htmlspecialchars($commentaire['date_post']) . ")</em>";
                         echo "<h3>" . htmlspecialchars($commentaire['titre_post']) . "</h3>";
                         echo "<p>" . nl2br(htmlspecialchars($commentaire['contenu_post'])) . "</p>";
@@ -120,7 +123,7 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
                             </form>';
 
                         // Bouton de suppression si l'utilisateur est le propriétaire du commentaire
-                        if ($commentaire['pseudo_bloggeur'] === $_SESSION['user']) {
+                        if ($commentaire['pseudo_bloggeur'] === $pseudo_suppression) {
                             echo '
                                 <form method="post" style="display:inline;">
                                     <input type="hidden" name="id_commentaire" value="' . htmlspecialchars($commentaire['id_post']) . '">
@@ -143,7 +146,7 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
                                 echo "<p>" . nl2br(htmlspecialchars($reponse['contenu_post'])) . "</p>";
 
                                 // Bouton de suppression si l'utilisateur est le propriétaire de la réponse
-                                if ($reponse['pseudo_bloggeur'] === $_SESSION['user']) {
+                                if ($reponse['pseudo_bloggeur'] === $pseudo_suppression) {
                                     echo '
                                         <form method="post" style="display:inline;">
                                             <input type="hidden" name="id_reponse" value="' . htmlspecialchars($reponse['id_post']) . '">
@@ -154,11 +157,10 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
                             }
                             echo "</div>";
                         }
-                
                         echo "</div>";
                     }
                 } else {
-                    echo "<p>Aucun commentaire pour ce restaurant.</p>";
+                    echo "<p>Aucun commentaire pour l'instant.</p>";
                 }
             } else {
                 echo "<p>Restaurant non trouvé.</p>";
@@ -170,6 +172,7 @@ include '../components/connexionbd.php'; // Assurez-vous que la connexion est co
         echo "<p>Paramètres d'URL manquants.</p>";
     }
     ?>
+
 </main>
 
 <?php include '../components/footer.php'; ?>

@@ -12,17 +12,18 @@ if (!isset($_SESSION['user'])) {
 
 try {
     // Récupère le pseudo de l'utilisateur connecté
-    $pseudo = $_SESSION['user'];
+    $email = $_SESSION['user'];
+    $sql = 'SELECT pseudo FROM FOUFOOD.UTILISATEUR WHERE email = :email';
 
     // Vérifie dans la base de données si l'utilisateur est administrateur
-    $sql = 'SELECT admin FROM FOUFOOD.UTILISATEUR WHERE pseudo = :pseudo';
+    $sql = 'SELECT est_admin FROM FOUFOOD.UTILISATEUR WHERE email = :email';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['pseudo' => $pseudo]);
+    $stmt->execute(['email' => $email]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$result || $result['admin'] != 1) {
+    if (!$result || $result['est_admin'] != 1) {
         echo "<p>Vous n'avez pas les droits nécessaires pour accéder à cette page.</p>";
-        include 'footer.php'; 
+        include '../components/footer.php'; 
         exit;
     }
 
@@ -94,5 +95,5 @@ try {
     echo "<p>Erreur SQL : " . $e->getMessage() . "</p>";
 }
 
-include 'footer.php'; 
+include '../components/footer.php'; 
 ?>
