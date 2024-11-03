@@ -4,9 +4,10 @@ include 'connexionbd.php'; // Assurez-vous que la connexion est correcte
 ?>
 
 <main>
+    
     <?php
     include 'fonctionsFormatRestaurant.php';
-
+    
     // Vérifie si les paramètres 'restaurant' existent dans l'URL
     if (isset($_GET['restaurant'])) {
         $idresto = $_GET['restaurant'];
@@ -21,6 +22,7 @@ include 'connexionbd.php'; // Assurez-vous que la connexion est correcte
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
+                echo '<div class="boite-bleu-restaurant">';
                 // Affichage des informations avec formatage
                 echo "<h1>Restaurant : " . htmlspecialchars($result['nom_resto']) . "</h1>";
                 echo "<h4>Adresse : " . htmlspecialchars($result['adresse_resto']) . "</h4>";
@@ -37,6 +39,8 @@ include 'connexionbd.php'; // Assurez-vous que la connexion est correcte
                         <input type="hidden" name="restaurant" value="' . htmlspecialchars($idresto) . '">
                         <button type="submit" class="btn">Ajouter un commentaire</button>
                     </form>';
+                echo '</div>';
+                   
 
                 // Récupérer et afficher les commentaires
                 $sqlCommentaires = 'SELECT * FROM FOUFOOD.POST WHERE id_resto = :idresto AND id_post_parent IS NULL ORDER BY date_post DESC';

@@ -114,10 +114,11 @@ p {
 }
 /* Styles pour les commentaires */
 .commentaire {
-    background-color: #a8d0d6;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
+    background-color: #417d86;
+    border-radius: 15px;
+    max-width: 90%; /* Limite la largeur à 90% de l'écran sur les petits appareils */
+    margin: 50px auto;
+    padding: 20px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     display: flex; /* Utilisation de flexbox */
     flex-direction: column; /* Aligne les éléments verticalement */
@@ -359,3 +360,26 @@ tbody tr:hover td {
     width: 48%;
 }
 
+.profil {
+    background-color: #a8d0d6;
+    border-radius: 15px;
+    max-width: 400px; /* Augmente la largeur maximale */
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.boite-bleu-restaurant{
+    background-color: #a8d0d6;
+    border-radius: 15px;
+    max-width: 90%; /* Limite la largeur à 90% de l'écran sur les petits appareils */
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+    gap: 5px; /* Espacement entre les éléments */
+}

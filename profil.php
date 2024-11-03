@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 }
 ?>
 
-<div style="text-align: center; margin-top: 20px;">
+<div class="profil" style="text-align: center; margin-top: 20px;">
     <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['user']); ?> !</h1>
     <p>Vous êtes bien connecté.</p>
     <form method="POST" style="display:inline;">
