@@ -2,7 +2,7 @@
 // Vérifie si une recherche a été faite
 if (isset($_GET['nomDuRestaurant'])) {
     $searchTerm = htmlspecialchars($_GET['nomDuRestaurant']); 
-    header("Location: ./listerestaurant.php?search=" . urlencode($searchTerm));
+    header("Location: ../pages/listerestaurant.php?search=" . urlencode($searchTerm));
     exit;
 }
 ?>

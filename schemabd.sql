@@ -1,10 +1,13 @@
 CREATE DATABASE FOUFOOD;
 
 CREATE TABLE FOUFOOD.UTILISATEUR (
-    pseudo VARCHAR(15) NOT NULL,
+    id_utilisateur INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(128) NOT NULL,
+    pseudo VARCHAR(30) NOT NULL,
     mot_de_passe VARCHAR(255) NOT NULL,
+    est_admin INT DEFAULT 0,
 
-    PRIMARY KEY (pseudo)
+    PRIMARY KEY (id_utilisateur)
 );
 
 CREATE TABLE FOUFOOD.RESTAURANT (
@@ -29,12 +32,13 @@ CREATE TABLE FOUFOOD.POST (
     contenu_post VARCHAR(280) NOT NULL,
     id_resto INT NOT NULL,
     id_post_parent INT,
-    pseudo_bloggeur VARCHAR(15) NOT NULL,
+    pseudo_bloggeur VARCHAR(30) NOT NULL,
 
     PRIMARY KEY (id_post),
 
     FOREIGN KEY (id_resto) REFERENCES FOUFOOD.RESTAURANT(id_resto),
     FOREIGN KEY (id_post_parent) REFERENCES FOUFOOD.POST(id_post)
-        ON DELETE CASCADE, -- Ça efface le post si le post parent est effacé
+        ON DELETE CASCADE,
     FOREIGN KEY (pseudo_bloggeur) REFERENCES FOUFOOD.UTILISATEUR(pseudo)
 );
+

@@ -1,12 +1,12 @@
 <?php 
-include 'header.php'; 
-include 'connexionbd.php'; // Assurez-vous que la connexion est correcte
+include '../components/header.php'; 
+include '../components/connexionbd.php'; // Assurez-vous que la connexion est correcte
 ?>
 
 <main>
     
     <?php
-    include 'fonctionsFormatRestaurant.php';
+    include '../components/fonctionsFormatRestaurant.php';
     
     // Vérifie si les paramètres 'restaurant' existent dans l'URL
     if (isset($_GET['restaurant'])) {
@@ -172,4 +172,4 @@ include 'connexionbd.php'; // Assurez-vous que la connexion est correcte
     ?>
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include '../components/footer.php'; ?>

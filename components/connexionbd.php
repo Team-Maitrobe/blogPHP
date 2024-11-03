@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Path to the JSON file
-$jsonFilePath = './security/id.json';
+$jsonFilePath = __DIR__ .'/../security/id.json';
 
 // Check if the JSON file exists
 if (!file_exists($jsonFilePath)) {

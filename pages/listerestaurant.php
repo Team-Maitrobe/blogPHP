@@ -1,5 +1,5 @@
 <?php
-    include 'connexionbd.php';
+    include '../components/connexionbd.php';
 
     // Préparer la requête SQL de base
     $sql_select = 'SELECT id_resto, nom_resto, adresse_resto, type_commande, services_proposes, regimes_proposes, type_cuisine, ambiance, tranche_prix FROM FOUFOOD.RESTAURANT';
@@ -18,17 +18,18 @@
     $stmt->execute(); // Exécute la requête
     $restaurants = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupère les résultats
 
-include 'header.php'; 
+include '../components/header.php'; 
 
-include 'fonctionsFormatRestaurant.php';
+include '../components/fonctionsFormatRestaurant.php';
 
 ?>
 
 
 <main>
     <h1>Liste des restaurants</h1>
-    <a href="./ajouter.php">Ajouter un restaurant</a>
+    
     <div class="boite-bleue-liste">
+        <a href="./ajouter.php" id="ajouter-liste">Ajouter un restaurant</a>
         <table border="1">
             <thead>
                 <tr>
@@ -65,4 +66,4 @@ include 'fonctionsFormatRestaurant.php';
     </div>
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include '../components/footer.php'; ?>

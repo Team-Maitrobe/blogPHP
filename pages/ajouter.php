@@ -1,11 +1,11 @@
 <?php
-include 'header.php';
-include 'connexionbd.php';
+include '../components/header.php'; 
+include '../components/connexionbd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des données du formulaire
     $nom = $_POST['nomDuRestaurant'];
-    $adresse = $_POST['adresse'] . ', ' . $_POST['codePostal'] .' ' . $_POST['ville'];
+    $adresse = $_POST['adresse'] . ', ' . $_POST['codePostal'] . ' ' . $_POST['ville'];
     $typeCuisine = $_POST['typeDeCuisine'];
     $tranchePrix = $_POST['prix'];
     $ambiance = $_POST['ambiance'];
@@ -166,4 +166,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include '../components/footer.php'; ?>
