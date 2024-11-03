@@ -27,8 +27,8 @@ include 'fonctionsFormatRestaurant.php';
 
 <main>
     <h1>Liste des restaurants</h1>
-    <a href="./ajouter.php">Ajouter un restaurant</a>
     <div class="boite-bleue-liste">
+    <a id="ajouter-liste" href="./ajouter.php">Ajouter un restaurant</a>
         <table border="1">
             <thead>
                 <tr>

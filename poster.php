@@ -72,6 +72,7 @@ if (isset($_GET['restaurant'])) {
         }
     } else {
         // Affichage du formulaire de commentaire
+        echo '<div class="post">';
         echo '
             <h3>' . ($idPostParent ? "Répondre au commentaire" : "Ajouter un commentaire") . ' pour le restaurant</h3>
             <form method="post">
@@ -83,6 +84,7 @@ if (isset($_GET['restaurant'])) {
             </form>
             <a href="restaurant.php?restaurant=' . urlencode($idresto) . '">Annuler</a>
         ';
+        echo '</div>';
     }
 } else {
     echo "<p>Paramètre 'restaurant' manquant dans l'URL.</p>";

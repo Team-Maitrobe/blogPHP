@@ -182,6 +182,22 @@ h3 {
     overflow-x: auto; /* Permet un défilement horizontal sur petits écrans */
 }
 
+#ajouter-liste{
+    background-color: #67989a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px; /* Agrandi */
+    cursor: pointer;
+    margin-left: auto; /* Alignement à droite */
+    text-decoration: none;
+}
+
+#ajouter-liste:hover {
+    background-color: #567f80;
+    text-decoration: underline;
+}
+
 /* Styles pour le tableau */
 table {
     width: 100%;
@@ -382,4 +398,123 @@ tbody tr:hover td {
     flex-direction: column;
     align-items: center; /* Centre les éléments horizontalement */
     gap: 5px; /* Espacement entre les éléments */
+}
+
+.modifMDP{
+    background-color: #a8d0d6;
+    border-radius: 15px;
+    max-width: 400px; /* Augmente la largeur maximale */
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* Alignement des labels */
+    label {
+        display: block;
+        text-align: left;
+        font-size: 14px;
+        margin: 10px 0 5px;
+        color: #333;
+    }
+
+    /* Champs de formulaire */
+    input[type="text"],
+    input[type="password"] {
+        width: 90%;
+        padding: 8px;
+        border: 2px solid #b0c4de;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    /* Bouton de soumission */
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #67989a;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #567f80;
+    }
+
+    /* Liens */
+    a {
+        color: #333;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+
+.post{
+    background-color: #a8d0d6;
+    border-radius: 15px;
+    max-width: 400px; /* Augmente la largeur maximale */
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* Alignement des labels */
+    label {
+        display: block;
+        text-align: left;
+        font-size: 14px;
+        margin: 10px 0 5px;
+        color: #333;
+    }
+
+    /* Champs de formulaire */
+    input[type="text"],
+    input[type="password"] {
+        width: 90%;
+        padding: 8px;
+        border: 2px solid #b0c4de;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    /* Bouton de soumission */
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #67989a;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #567f80;
+    }
+
+    /* Liens */
+    a {
+        color: #333;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+#commentaire {
+    margin-bottom: 15px;
 }

@@ -1,7 +1,6 @@
 <?php 
 include 'header.php'; 
 include 'connexionbd.php'; // Inclure la connexion à la base de données
-
 if (!isset($_SESSION['user'])) {
     echo "<p>Vous devez être connecté pour accéder à cette page.</p>";
     include 'footer.php'; 
@@ -43,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
 }
 ?>
 
-<div style="text-align: center; margin-top: 20px;">
+<div class="modifMDP" style="text-align: center; margin-top: 20px;">
     <h2>Changer votre mot de passe</h2>
     <form method="POST">
         <label for="old_password">Ancien mot de passe :</label><br>
