@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <main>
     <h1>Ajouter un restaurant</h1>
-    <div class="boite-bleue">
+    <div class="boite-bleue-ajouter">
         <form method="POST">
             <input type="text" name="nomDuRestaurant" placeholder="Nom du restaurant" required />
             <input type="text" name="adresse" placeholder="Adresse" required />

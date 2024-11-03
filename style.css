@@ -1,4 +1,3 @@
-/* Styles généraux */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -254,14 +253,6 @@ tbody tr:hover td {
 }
 
 @media (max-width: 480px) {
-    th, td {
-        padding: 6px;
-        font-size: 12px;
-    }
-}
-
-
-@media (max-width: 480px) {
     /* Pour les petits écrans, ajuste encore plus les marges et le texte */
     .boite-bleue-connexion {
         width: 100%;
@@ -290,92 +281,72 @@ tbody tr:hover td {
     }
 }
     
-/* CSS du formulaire pour ajouter un restaurant */
 /* Conteneur principal */
-.boite-bleue {
-    background-color: #cde7f0;
-    border: 3px solid #7bb9d1;
-    padding: 20px;
+.boite-bleue-ajouter {
+    background-color: #a8d0d6;
     border-radius: 15px;
-    width: 100%;
-    margin: 20px auto;
-    font-family: 'Comic Sans MS', sans-serif;
-    color: #333;
-}
-
-/* Titre du formulaire */
-.boite-bleue h2 {
-    font-size: 24px;
-    font-weight: bold;
+    max-width: 400px; /* Augmente la largeur maximale */
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
+/* Titre du formulaire */
+.boite-bleue-ajouter h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
 /* Styles des champs de texte */
-.boite-bleue input[type="text"] {
-    width: calc(100% - 120px); /* Ajuste la largeur pour laisser de la place aux labels */
+.boite-bleue-ajouter input[type="text"] {
+    width: 90%;
     padding: 8px;
-    border: 2px solid #bbb;
-    border-radius: 15px;
-    margin-bottom: 10px;
+    border: 2px solid #b0c4de;
+    border-radius: 5px;
     font-size: 16px;
-    color: #666;
-    background-color: #f3f7f9;
-    font-style: italic;
-    display: inline-block; /* Affiche les champs de texte en ligne */
-    vertical-align: middle; /* Aligne verticalement au milieu */
+    margin-bottom: 15px;
 }
 
 /* Bouton de soumission */
-.boite-bleue input[type="submit"] {
-    background-color: #7bb9d1;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
+.boite-bleue-ajouter input[type="submit"] {
     width: 100%;
+    padding: 10px;
+    background-color: #67989a;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     margin-top: 10px;
 }
 
-.boite-bleue input[type="submit"]:hover {
-    background-color: #5da1b7;
+.boite-bleue-ajouter input[type="submit"]:hover {
+    background-color: #567f80;
 }
 
 /* Checkboxes */
-.boite-bleue label {
-    display: inline-block; /* Affiche les labels en ligne */
-    width: 100px; /* Largeur fixe pour les labels */
-    margin: 5px 0;
-    font-size: 16px;
-    vertical-align: middle; /* Aligne verticalement au milieu */
+.boite-bleue-ajouter label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    margin: 10px 0 5px;
+    color: #333;
 }
 
-.boite-bleue input[type="checkbox"] {
-    accent-color: #e55e5e;
+.boite-bleue-ajouter input[type="checkbox"] {
     margin-right: 10px;
-    transform: scale(1.2);
 }
 
 /* Sélecteurs */
-.boite-bleue select {
-    width: calc(100% - 120px); /* Ajuste la largeur pour laisser de la place aux labels */
+.boite-bleue-ajouter select {
+    width: 90%;
     padding: 8px;
-    margin: 8px 0;
-    border: 2px solid #bbb;
-    border-radius: 15px;
+    border: 2px solid #b0c4de;
     font-size: 16px;
-    color: #666;
-    background-color: #f3f7f9;
-    display: inline-block; /* Affiche les sélecteurs en ligne */
-    vertical-align: middle; /* Aligne verticalement au milieu */
-}
-
-/* Icône Too Good To Go */
-.boite-bleue .options label i {
-    font-size: 12px;
-    color: #333;
-    margin-left: 5px;
+    margin-bottom: 15px;
 }
 
 /* Sections des différentes options */
@@ -387,3 +358,4 @@ tbody tr:hover td {
     display: inline-block;
     width: 48%;
 }
+
